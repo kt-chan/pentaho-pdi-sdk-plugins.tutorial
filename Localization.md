@@ -12,7 +12,7 @@ The key to resolving localized strings is to use the `getString()` methods of `o
 
 All PDI plugin classes that use localization declare a `private static Class<?> PKG` field, and assign a class that lives one package-level above the message bundle package. This is often the main class of the plugin.
 
-With the PKG field defined, the plugin then resolves its localized strings with a call to `BaseMessages.getString(PKG, “localization key”, ... optional_parameters)`. The first argument helps PDI finding the correct message bundle, the second argument is the key to localize, and the optional parameters are injected into the localized string following the Java [Message Format][Message Format] conventions.
+With the PKG field defined, the plugin then resolves its localized strings with a call to `BaseMessages.getString(PKG, "localization key", ... optional_parameters)`. The first argument helps PDI finding the correct message bundle, the second argument is the key to localize, and the optional parameters are injected into the localized string following the Java [Message Format][Message Format] conventions.
 
 ## Common Localization Strings
 
