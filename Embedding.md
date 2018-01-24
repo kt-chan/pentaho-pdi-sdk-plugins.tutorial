@@ -18,7 +18,7 @@ You can point to these folders directly within the PDI installation or copy thes
 
    ```
    java -classpath "$PDI_DI_DIR/lib/*;$PDI_DI_DIR/libswt/linux/*;
-   $PDI_DI_DIR/classes/*" MyApp.java
+      $PDI_DI_DIR/classes/*" MyApp.java
    ```
 
 #### OSGI features
@@ -26,9 +26,9 @@ You can point to these folders directly within the PDI installation or copy thes
 In order to use default osgi features of PDI, make the PDI `data-integration/system` folder available to your application - this folder is required for proper karaf initialization. This can be done in the following ways:
 * Copy the `data-integration/system` folder directly into the `<working directory>/systems` folder of your application
 * Set the `pentaho.user.dir` system property to point to the PDI `data-integration` folder (parent of the system folder), either through a command line option (`-Dpentaho.user.dir=<pdi install path>/data-integration`), or directly within the code:
-
       ```
-      System.setProperty( "pentaho.user.dir", new File("<pdi install path>/data-integration") );
+      System.setProperty( "pentaho.user.dir", new File("<pdi install path>/
+         data-integration") );
       ```
 
 Furthermore, to enable osgi features of PDI that are not enabled by default, the appropriate feature  (jar or kar) needs to be added to the data-integration\system\karaf\deploy folder. No application reboot is required.
@@ -43,11 +43,17 @@ To make default kettle plugins available, do one of the following:
 * Copy the  `<pdi install path>/data-integration/plugins` folder directly into the `<working directory>/systems` folder of your application
 * Set the `KETTLE_PLUGIN_BASE_FOLDERS` system property to point to the PDI `data-integration` folder (parent of the plugins folder), either through a command line option (`-DKETTLE_PLUGIN_BASE_FOLDERS=<pdi install path>/data-integration`), or directly within the code:
 
-```System.setProperty( "KETTLE_PLUGIN_BASE_FOLDERS", new File("<pdi install path>/data-integration") );```
+      ```
+      System.setProperty( "KETTLE_PLUGIN_BASE_FOLDERS", new File("<pdi install path>/
+         data-integration") );
+      ```
 
 Once the plugin location(s) are properly configured, you can place any additional custom plugins in the specified locations. You can also place custom plugins in the location(s) of your choosing, as long at these locations are registered with the appropriate implementation of `PluginTypeInterface` prior to initializing the kettle environment:
 
-```StepPluginType.getInstance().getPluginFolders().add( new PluginFolder( "<path to the plugin folder>" , false, true ) );```
+   ```
+   StepPluginType.getInstance().getPluginFolders().add( new PluginFolder(
+      "<path to the plugin folder>" , false, true ) );
+   ```
 
 ### Sample Code
 
