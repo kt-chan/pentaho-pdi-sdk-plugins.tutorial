@@ -27,10 +27,10 @@ In order to use default osgi features of PDI, make the PDI `data-integration/sys
 * Copy the `data-integration/system` folder directly into the `<working directory>/systems` folder of your application
 * Set the `pentaho.user.dir` system property to point to the PDI `data-integration` folder (parent of the system folder), either through a command line option (`-Dpentaho.user.dir=<pdi install path>/data-integration`), or directly within the code:
 
-      ```
-      System.setProperty( "pentaho.user.dir", new File("<pdi install path>/
-         data-integration") );
-      ```
+   ```
+   System.setProperty( "pentaho.user.dir", new File("<pdi install path>/
+      data-integration") );
+   ```
 
 Furthermore, to enable osgi features of PDI that are not enabled by default, the appropriate feature  (jar or kar) needs to be added to the data-integration\system\karaf\deploy folder. No application reboot is required.
 
