@@ -7,7 +7,7 @@ You can get the accompanying sample project from the kettle-sdk-embedding-sample
 #### PDI Dependencies
 All PDI dependencies must be included in the class path. This includes files located within the following pdi folders:
 * `data-integration/lib`
-* `data-integration/libswt/&lt;os&gt;`
+* `data-integration/libswt/<os>`
 * `data-integration/classes`
 
 You can point to these folders directly within the PDI installation or copy these folders into your project’s directory structure.
