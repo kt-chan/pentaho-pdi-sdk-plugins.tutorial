@@ -2,7 +2,7 @@
 
 To integrate PDI transformations and jobs into your applications, embed PDI objects directly into your application code. The instructions in this section address common embedding scenarios.
 
-You can get the accompanying sample project from the kettle-sdk-embedding-samples folder of the sample code package. The sample project is bundled with a minimal set of dependencies. In a real-world implementation, projects require the complete set of PDI dependencies from `data-integration/lib`, and may require plugins from `data-integration/plugins/`. Consider the following:
+You can get the accompanying sample project from the kettle-sdk-embedding-samples folder of the sample code package. The sample project is bundled with a minimal set of dependencies. In a real-world implementation, projects require the complete set of PDI dependencies from `data-integration/lib`, and may require plugins from `data-integration/plugins`. Consider the following:
 
 #### PDI Dependencies
 All PDI dependencies must be included in the class path. This includes files located within the following pdi folders:
@@ -12,17 +12,33 @@ All PDI dependencies must be included in the class path. This includes files loc
 
 You can point to these folders directly within the PDI installation or copy these folders into your project’s directory structure.
 
-#### Default OSGI features
+#### OSGI features
 
 In order to use default osgi features of PDI, make the PDI `data-integration/system` folder available to your application - this folder is required for proper karaf initialization. This can be done in the following ways:
 * Copy the `data-integration/system` folder directly into the `<working directory>/systems` folder of your application
-* Set the pentaho.user.dir system property to point to the PDI data-integration folder (parent of the system folder), either through a command line option (-Dpentaho.user.dir=<pdi install>/data-integration), or directly within the code:
+* Set the `pentaho.user.dir` system property to point to the PDI `data-integration` folder (parent of the system folder), either through a command line option (`-Dpentaho.user.dir=<pdi install path>/data-integration`), or directly within the code:
 
-```System.setProperty( "pentaho.user.dir", new File("<pdi install>/data-integration") );```
+```System.setProperty( "pentaho.user.dir", new File("<pdi install path>/data-integration") );```
 
 Furthermore, to enable osgi features of PDI that are not enabled by default, the appropriate feature  (jar or kar) needs to be added to the data-integration\system\karaf\deploy folder. No application reboot is required.
 
+#### Legacy Kettle Plugins
 
+Make the kettle plugins (non-osgi) available to your application. Out of the box, the kettle engine will look for plugins in these two locations (recursively):
+* `<working directory>plugins`
+* `<user.home>/.kettle/plugins`
+
+To make default kettle plugins available, do one of the following:
+* Copy the  `<pdi install path>/data-integration/plugins` folder directly into the `<working directory>/systems` folder of your application
+* Set the `KETTLE_PLUGIN_BASE_FOLDERS` system property to point to the PDI `data-integration` folder (parent of the plugins folder), either through a command line option (`-DKETTLE_PLUGIN_BASE_FOLDERS=<pdi install path>/data-integration`), or directly within the code:
+
+```System.setProperty( "KETTLE_PLUGIN_BASE_FOLDERS", new File("<pdi install path>/data-integration") );```
+
+Once the plugin location(s) are properly configured, you can place any additional custom plugins in the specified locations. You can also place custom plugins in the location(s) of your choosing, as long at these locations are registered with the appropriate implementation of `PluginTypeInterface` prior to initializing the kettle environment:
+
+```StepPluginType.getInstance().getPluginFolders().add( new PluginFolder( "<path to the plugin folder>" , false, true ) );```
+
+### Sample Code
 
 For each embedding scenario, there is a sample class that can be executed as a stand-alone java application.
 
