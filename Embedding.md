@@ -27,11 +27,6 @@ In order to use default osgi features of PDI, make the PDI `data-integration/sys
 * Copy the `data-integration/system` folder directly into the `<working directory>/systems` folder of your application
 * Set the `pentaho.user.dir` system property to point to the PDI `data-integration` folder (parent of the system folder), either through a command line option (`-Dpentaho.user.dir=<pdi install path>/data-integration`), or directly within the code:
 
-
-        ```c
-        printf("Hello, World!");
-        ```
-
    ```
    System.setProperty( "pentaho.user.dir", new File("<pdi install path>/
       data-integration") );
@@ -49,10 +44,10 @@ To make default kettle plugins available, do one of the following:
 * Copy the  `<pdi install path>/data-integration/plugins` folder directly into the `<working directory>/systems` folder of your application
 * Set the `KETTLE_PLUGIN_BASE_FOLDERS` system property to point to the PDI `data-integration` folder (parent of the plugins folder), either through a command line option (`-DKETTLE_PLUGIN_BASE_FOLDERS=<pdi install path>/data-integration`), or directly within the code:
 
-      ```
-      System.setProperty( "KETTLE_PLUGIN_BASE_FOLDERS", new File("<pdi install path>/
-         data-integration") );
-      ```
+   ```
+   System.setProperty( "KETTLE_PLUGIN_BASE_FOLDERS", new File("<pdi install path>/
+      data-integration") );
+   ```
 
 Once the plugin location(s) are properly configured, you can place any additional custom plugins in the specified locations. You can also place custom plugins in the location(s) of your choosing, as long at these locations are registered with the appropriate implementation of `PluginTypeInterface` prior to initializing the kettle environment:
 
