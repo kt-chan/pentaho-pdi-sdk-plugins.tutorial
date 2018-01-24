@@ -4,7 +4,7 @@ To integrate PDI transformations and jobs into your applications, embed PDI obje
 
 You can get the accompanying sample project from the kettle-sdk-embedding-samples folder of the sample code package. The sample project is bundled with a minimal set of dependencies. In a real-world implementation, projects require the complete set of PDI dependencies from `data-integration/lib`, and may require plugins from `data-integration/plugins/`. Consider the following:
 
-### PDI Dependencies
+#### PDI Dependencies
 All PDI dependencies must be included in the class path. This includes files located within the following pdi folders:
 * data-integration/lib
 * data-integration/libswt/&lt;os&gt;
@@ -12,12 +12,13 @@ All PDI dependencies must be included in the class path. This includes files loc
 
 You can point to these folders directly within the PDI installation or copy these folders into your project’s directory structure.
 
-### Default OSGI features
+#### Default OSGI features
 
 In order to use default osgi features of PDI, make the PDI data-integration/system folder available to your application - this folder is required for proper karaf initialization. This can be done in the following ways:
 * Copy the data-integration/system folder directly into the <working directory>/systems folder of your application
 * Set the pentaho.user.dir system property to point to the PDI data-integration folder (parent of the system folder), either through a command line option (-Dpentaho.user.dir=<pdi install>/data-integration), or directly within the code:
-`System.setProperty( "pentaho.user.dir", new File("<pdi install>/data-integration") );`
+
+```System.setProperty( "pentaho.user.dir", new File("<pdi install>/data-integration") );```
 
 Furthermore, to enable osgi features of PDI that are not enabled by default, the appropriate feature  (jar or kar) needs to be added to the data-integration\system\karaf\deploy folder. No application reboot is required.
 
