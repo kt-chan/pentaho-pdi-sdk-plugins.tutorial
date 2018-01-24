@@ -8,8 +8,7 @@ You can get the accompanying sample project from the kettle-sdk-embedding-sample
 ** data-integration/lib
 ** data-integration/libswt/<os>
 ** data-integration/classes
-
-You can point to these folders directly within the PDI installation or copy these folders into your project’s directory structure.
+> You can point to these folders directly within the PDI installation or copy these folders into your project’s directory structure.
 
 For each embedding scenario, there is a sample class that can be executed as a stand-alone java application.
 
