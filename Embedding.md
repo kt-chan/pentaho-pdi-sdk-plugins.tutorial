@@ -5,7 +5,7 @@ To integrate PDI transformations and jobs into your applications, embed PDI obje
 You can get the accompanying sample project from the kettle-sdk-embedding-samples folder of the sample code package. The sample project is bundled with a minimal set of dependencies. In a real-world implementation, projects require the complete set of PDI dependencies from `data-integration/lib`, and may require plugins from `data-integration/plugins`. Consider the following:
 
 #### PDI Dependencies
-All PDI dependencies must be included in the class path. This includes files located within the following pdi folders:
+All PDI dependencies must be included in the class path. This includes files located within the following PDI folders:
 * `data-integration/lib`
 * `data-integration/libswt/<os>`
 * `data-integration/classes`
