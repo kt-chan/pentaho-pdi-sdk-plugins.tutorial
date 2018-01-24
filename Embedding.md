@@ -27,7 +27,7 @@ In order to use default osgi features of PDI, make the PDI `data-integration/sys
 * Copy the `data-integration/system` folder directly into the `<working directory>/systems` folder of your application
 * Set the `pentaho.user.dir` system property to point to the PDI `data-integration` folder (parent of the system folder), either through a command line option (`-Dpentaho.user.dir=<pdi install path>/data-integration`), or directly within the code:
 
-      ```
+      ```c
       System.setProperty( "pentaho.user.dir", new File("<pdi install path>/
          data-integration") );
       ```
