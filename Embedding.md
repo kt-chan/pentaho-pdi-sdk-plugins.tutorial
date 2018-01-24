@@ -12,7 +12,9 @@ All PDI dependencies must be included in the class path. This includes files loc
 
 You can point to these folders directly within the PDI installation or copy these folders into your project’s directory structure. Examples:
 
-```java -classpath "lib/*;libswt/linux/*;classes/*" MyApp.java```
+   ```
+   java -classpath "lib/*;libswt/linux/*;classes/*" MyApp.java
+   ```
 
 ```java -classpath "$PDI_DI_DIR/lib/*;$PDI_DI_DIR/libswt/linux/*;$PDI_DI_DIR/classes/*" MyApp.java```
 
