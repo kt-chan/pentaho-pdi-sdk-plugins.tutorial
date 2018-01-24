@@ -17,7 +17,8 @@ You can point to these folders directly within the PDI installation or copy thes
    ```
 
    ```
-   java -classpath "$PDI_DI_DIR/lib/*;$PDI_DI_DIR/libswt/linux/*;$PDI_DI_DIR/classes/*" MyApp.java
+   java -classpath "$PDI_DI_DIR/lib/*;$PDI_DI_DIR/libswt/linux/*;
+   $PDI_DI_DIR/classes/*" MyApp.java
    ```
 
 #### OSGI features
