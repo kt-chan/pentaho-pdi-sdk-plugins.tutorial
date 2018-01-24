@@ -69,12 +69,13 @@ For each embedding scenario, there is a sample class that can be executed as a s
 
 ### Running Transformations
 
-If you want to run a PDI transformation from Java code in a stand-alone application, take a look at this sample class, `org.pentaho.di.sdk.samples.embedding.RunningTransformations`. It sets the parameters and executes the transformation in `etl/parameterized_transformation.ktr`. The transform can be run from the `.ktr` file using `runTransformationFromFileSystem()` or from a PDI repository using `runTransfomrationFromRepository()`.
+If you want to run a PDI transformation from Java code in a stand-alone application, take a look at this sample class, `org.pentaho.di.sdk.samples.embedding.RunningTransformations`. It executes the sample transformation(s) located in the `etl` folder. The transform can be run from the `.ktr` file using `runTransformationFromFileSystem()` or from a PDI repository using `runTransfomrationFromRepository()`.
 
 1. Always make the first call to `KettleEnvironment.init()` whenever you are working with the PDI APIs.
 2. Prepare the transformation. The definition of a PDI transformation is represented by a `TransMeta` object. You can load this object from a `.ktr` file, a PDI repository, or you can generate it dynamically. To query the declared parameters of the transformation definition use `listParameters()`, or to query the assigned values use `setParameterValue()`.
 3. Execute the transformation. An executable `Trans` object is derived from the `TransMeta` object that is passed to the constructor. The `Trans` object starts and then executes asynchronously. To ensure that all steps of the `Trans` object have completed, call `waitUntilFinished()`.
 4. Evaluate the transformation outcome. After the `Trans` object completes, you can access the result using `getResult()`. The `Result` object can be queried for success by evaluating `getNrErrors()`. This method returns zero (0) on success and a non-zero value when there are errors. To get more information, retrieve the transformation log lines.
+5. When the transformations have completed, it is best practice to call `KettleEnvironment.shutdown()` to ensure the proper shutdown of all kettle listeners.
 
 ### Running Jobs
 
@@ -84,6 +85,7 @@ If you want to run a PDI job from Java code in a stand-alone application, take a
 2. Prepare the job. The definition of a PDI job is represented by a `JobMeta` object. You can load this object from a `.kjb` file, a PDI repository, or you can generate it dynamically. To query the declared parameters of the job definition use `listParameters()`. To set the assigned values use `setParameterValue()`.
 3. Execute the job. An executable `Job` object is derived from the `JobMeta` object that is passed in to the constructor. The `Job` object starts, and then executes in a separate thread. To wait for the job to complete, call `waitUntilFinished()`.
 4. Evaluate the job outcome. After the `Job` completes, you can access the result using `getResult()`. The `Result` object can be queried for success using `getResult()`. This method returns true on success and false on failure. To get more information, retrieve the job log lines.
+5. When the transformations have completed, it is best practice to call `KettleEnvironment.shutdown()` to ensure the proper shutdown of all kettle listeners.
 
 ### Building Transformations Dynamically
 
