@@ -41,7 +41,7 @@ Make the kettle plugins (non-osgi) available to your application. Out of the box
 * `<user.home>/.kettle/plugins`
 
 To make default kettle plugins available, do one of the following:
-* Copy the  `<pdi install path>/data-integration/plugins` folder directly into the `<working directory>/systems` folder of your application
+* Copy the  `<pdi install path>/data-integration/plugins` folder directly into the `<working directory>/plugins` folder of your application
 * Set the `KETTLE_PLUGIN_BASE_FOLDERS` system property to point to the PDI `data-integration` folder (parent of the plugins folder), either through a command line option (`-DKETTLE_PLUGIN_BASE_FOLDERS=<pdi install path>/data-integration`), or directly within the code:
 
    ```
