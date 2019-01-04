@@ -85,7 +85,7 @@ If you want to run a PDI job from Java code in a stand-alone application, take a
 2. Prepare the job. The definition of a PDI job is represented by a `JobMeta` object. You can load this object from a `.kjb` file, a PDI repository, or you can generate it dynamically. To query the declared parameters of the job definition use `listParameters()`. To set the assigned values use `setParameterValue()`.
 3. Execute the job. An executable `Job` object is derived from the `JobMeta` object that is passed in to the constructor. The `Job` object starts, and then executes in a separate thread. To wait for the job to complete, call `waitUntilFinished()`.
 4. Evaluate the job outcome. After the `Job` completes, you can access the result using `getResult()`. The `Result` object can be queried for success using `getResult()`. This method returns true on success and false on failure. To get more information, retrieve the job log lines.
-5. When the transformations have completed, it is best practice to call `KettleEnvironment.shutdown()` to ensure the proper shutdown of all kettle listeners.
+5. When the jobs have completed, it is best practice to call `KettleEnvironment.shutdown()` to ensure the proper shutdown of all kettle listeners.
 
 ### Building Transformations Dynamically
 
